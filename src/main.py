@@ -45,46 +45,57 @@ def main():
 #Option 2: Add a new lead
         elif choice == "2":
             visual_seperator()
-            company_url = input("Company URL (in http:// or https:// format e.g." + Fore.GREEN + "\nhttps://www.salesforce.com" + Style.RESET_ALL + "): ")
-            
+            while True:
+                company_url = input("Company URL (in http:// or https:// format e.g." + Fore.GREEN + "\nhttps://www.salesforce.com" + Style.RESET_ALL + "): ")
+                if validations.company_url_validation(company_url):
+                    break
+                else:
+                    print(Fore.RED + "Invalid - Enter company URL in either http:// or https:// format." + Style.RESET_ALL)
+
+            while True:
+                company_name = input("Company name: ")
+                if validations.company_name_validation(company_name):
+                    break
+                else:
+                    print(Fore.RED + "Invalid - Enter company name longer than 0 characters." + Style.RESET_ALL)
+
+            while True:
+                name = input("Lead's name (optional): ")
+                if validations.name_validation(name):
+                    break
+                else:
+                    print(Fore.RED + "Invalid - Name must only contain letters." + Style.RESET_ALL)
+
+            while True:
+                role = input("Lead's role (optional): ")
+                if validations.role_validation(role):
+                    break
+                else:
+                    print(Fore.RED + "Invalid - Role must only contain letters." + Style.RESET_ALL)
+
+            while True:
+                email = input("Lead's email (optional): ")
+                if validations.email_validation(email):
+                    break
+                else:
+                    print(Fore.RED + "Invalid - Enter a valid email address." + Style.RESET_ALL)
+
+            while True:
+                assigned_to = input("Lead owner's name: ")
+                if validations.assigned_to_validation(assigned_to):
+                    break
+                else:
+                    print(Fore.RED + "Invalid - Sales representative name must be only letters." + Style.RESET_ALL)
+
+            while True:
+                status = input("Lead status [qualified/unqualified] (optional): ")
+                if validations.status_validation(status):
+                    break
+                else:
+                    print(Fore.RED + "Invalid - Enter status 'qualified' or 'unqualified'." + Style.RESET_ALL)
+
             if validations.url_exists(company_url, lead_database):
                 print(Fore.RED + "Invalid - A lead with this URL already exists." + Style.RESET_ALL)
-                continue
-        
-            company_name = input("Company name: ")
-            name = input("Lead's name (optional): ")
-            role = input("Lead's role (optional): ")
-            email = input("Lead's email (optional): ")
-            assigned_to = input("Lead owner's name: ")
-            status = input("Lead status [qualified/unqualified] (optional): ")
-            
-
-            if not validations.name_validation(name):
-                print(Fore.RED + "Invalid - Name must only contain letters." + Style.RESET_ALL)
-                continue
-            
-            if not validations.company_name_validation(company_name):
-                print(Fore.RED + "Invalid - Enter company name longer than 0 characters." + Style.RESET_ALL)
-                continue
-            
-            if not validations.company_url_validation(company_url):
-                print(Fore.RED + "Invalid - Enter company url in either http:// or https:// format."  + Style.RESET_ALL)
-                continue
-            
-            if not validations.email_validation(email):
-                print(Fore.RED + "Invalid - Enter a valid email address." + Style.RESET_ALL)
-                continue
-            
-            if not validations.role_validation(role):
-                print(Fore.RED + "Invalid - Role must only contain letters." + Style.RESET_ALL)
-                continue
-            
-            if not validations.assigned_to_validation(assigned_to):
-                print(Fore.RED + "Invalid - Sales representative name must be only letters" + Style.RESET_ALL)
-                continue
-            
-            if not validations.status_validation(status):
-                print(Fore.RED + "Invalid - Enter status 'qualified' or 'unqualified'" + Style.RESET_ALL)
                 continue
             
             validations.confirmation_validation(
@@ -152,7 +163,8 @@ def main():
             )
 
             if data_operations.update_lead(company_url, field, new_value, lead_database):
-                print(f"Lead {field} updated successfully.")
+                visual_seperator()
+                print(Fore.GREEN + f"Lead {field} updated successfully." + Style.RESET_ALL)
             else:
                 print("Failed to update lead.")
 

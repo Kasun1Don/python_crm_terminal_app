@@ -29,7 +29,7 @@ def display_leads(lead_database="leads_appdatabase.csv"):
         df = pd.read_csv(lead_database)
         
         # Select specific columns to display
-        selected_columns = ['company_url', 'company_name', 'assigned_to']
+        selected_columns = ['company_url', 'company_name', 'name', 'role', 'assigned_to', 'status']
         df_selected = df[selected_columns]
         
         # Fill NaN values with empty strings
@@ -39,8 +39,8 @@ def display_leads(lead_database="leads_appdatabase.csv"):
         table_str = tabulate(df_selected, headers='keys', tablefmt='grid', showindex=False)
         print(table_str)
 
-    except Exception as e:
-        print(f"An error occurred: {e}")
+    except Exception:
+        print("An error occurred, please restart program")
 
 
 #appends a new lead record to the csv file

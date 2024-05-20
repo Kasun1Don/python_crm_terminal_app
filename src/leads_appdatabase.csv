@@ -1,7 +1,7 @@
 id,name,company_name,company_url,email,role,assigned_to,status,timestamp
 ,,,https://www.salesforce.com,,,Don,,
 ,,,https://www.slack.com,,,Don,,
-,,,https://www.zoom.us,,,Don,,
+,,,https://www.zoom.us,,,Don,unqualified,
 ,,,https://www.dropbox.com,,,Don,,
 ,,,https://www.shopify.com,,,Don,,
 ,,,https://www.hubspot.com,,,Don,,
@@ -10,4 +10,4 @@ id,name,company_name,company_url,email,role,assigned_to,status,timestamp
 ,,,https://www.canva.com,,,Don,,
 ,,,https://www.zendesk.com,,,Don,,
 ,,,https://www.tanda.co,,,Jake,,
-aa56b3aa-1b6e-46e9-8853-42b7660f1188,James,Vercel,https://vercel.com,james@vercel.com,CTO,Jake,unqualified,2024-05-20 23:11:50.112245
+aa56b3aa-1b6e-46e9-8853-42b7660f1188,James,Vercel,https://www.vercel.com,james@vercel.com,CTO,Jake,unqualified,2024-05-20 23:11:50.112245
