@@ -1,5 +1,5 @@
 import csv
-import pandas
+import pandas as pd
 
 #searches for a lead in the CSV file based on the company URL and prints the lead's details if found
 def find_lead(company_url, lead_database="leads_appdatabase.csv"):
@@ -18,6 +18,17 @@ def find_lead(company_url, lead_database="leads_appdatabase.csv"):
                 print(f"Timestamp: {row['timestamp']}")
                 return
     print("No lead found for this company URL.")
+
+#prints all leads from the CSV file to the console using pandas
+def display_leads(lead_database="leads_appdatabase.csv"):
+    try:
+        df = pd.read_csv(lead_database)
+        df.fillna('', inplace=True)  # Replace NaN with an empty string
+        df_str = df.to_string(index=False, col_space=10)
+        print(df_str)
+
+    except Exception as e:
+        print(f"An Error Occurred with CSV: {e}")
 
 
 #appends a new lead record to the csv file
@@ -39,15 +50,8 @@ def remove_record(company_url, lead_database="lead_appdatabase.csv"):
         #write filtered rows back to the CSV file, removing the rows with specified URLs
         writer.writerows(lines)
 
-
-#prints all leads from the CSV file to the console
-def display_leads(lead_database="leads_appdatabase.csv"):
-    df = pd.read_csv(lead_database)
-    print(df.to_string(index=False))
-
-
 #reads the column titles
-def get_columns()
-    
-
-
+def get_columns(lead_database="lead_database.csv"):
+    with open(lead_database) as f:
+        data = f.readline()
+        return data.strip("\n").split(",")
