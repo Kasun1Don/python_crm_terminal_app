@@ -42,7 +42,8 @@ def confirmation_validation(prompt:str, feedback:str):
         confirmation = input(prompt).upper()
         if confirmation == "Y":
             break
-        if confirmation == "N":
+        elif confirmation == "N":
             print(feedback)
             exit()
-        print("Invalid input, enter Y or N")
+        else:
+            print("Invalid input, enter Y or N")
