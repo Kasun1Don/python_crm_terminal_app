@@ -50,3 +50,12 @@ def confirmation_validation(prompt:str, feedback:str):
             exit()
         else:
             print("Invalid input, enter Y or N")
+
+# Retrieve the assigned_to field for a given company URL
+def get_assigned_to(company_url, lead_database="leads_appdatabase.csv"):
+    with open(lead_database) as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            if row["company_url"] == company_url:
+                return row["assigned_to"]
+    return None

@@ -38,7 +38,7 @@ def insert_lead(new_lead, lead_database="leads_appdatabase.csv"):
         writer.writerow(new_lead)
 
 #remove a lead record from the CSV file based on the company URL
-def remove_record(company_url, lead_database="lead_appdatabase.csv"):
+def remove_lead(company_url, lead_database="leads_appdatabase.csv"):
     lines = []
     with open(lead_database, "r") as readfile:
         reader = csv.reader(readfile)
@@ -51,7 +51,7 @@ def remove_record(company_url, lead_database="lead_appdatabase.csv"):
         writer.writerows(lines)
 
 #reads the column titles
-def get_columns(lead_database="lead_database.csv"):
+def get_columns(lead_database="leads_appdatabase.csv"):
     with open(lead_database) as f:
         data = f.readline()
         return data.strip("\n").split(",")
