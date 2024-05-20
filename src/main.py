@@ -46,6 +46,11 @@ def main():
         elif choice == "2":
             visual_seperator()
             company_url = input("Company URL (in http:// or https:// format e.g." + Fore.GREEN + "\nhttps://www.salesforce.com" + Style.RESET_ALL + "): ")
+            
+            if validations.url_exists(company_url, lead_database):
+                print(Fore.RED + "Invalid - A lead with this URL already exists." + Style.RESET_ALL)
+                continue
+        
             company_name = input("Company name: ")
             name = input("Lead's name (optional): ")
             role = input("Lead's role (optional): ")
@@ -68,10 +73,6 @@ def main():
             
             if not validations.email_validation(email):
                 print(Fore.RED + "Invalid - Enter a valid email address." + Style.RESET_ALL)
-                continue
-            
-            if validations.url_exists(company_url, lead_database):
-                print(Fore.RED + "Invalid - A lead this URL already exists." + Style.RESET_ALL)
                 continue
             
             if not validations.role_validation(role):
@@ -97,7 +98,8 @@ def main():
         
 #Option 3: Remove a lead
         elif choice == "3":
-            company_url = input("Enter company URL to remove lead: ")
+            visual_seperator
+            company_url = input("Enter company URL to remove lead (in http:// or https:// format e.g." + Fore.GREEN + "\nhttps://www.salesforce.com" + Style.RESET_ALL + "): ")
             if validations.url_exists(company_url, lead_database):
                 validations.confirmation_validation(
                     "Do you want to permanently delete this lead? (Y/N): ",
@@ -111,36 +113,37 @@ def main():
         
 #Option 4: Modify existing lead details
         elif choice == "4":
+            visual_seperator()
             company_url = input("Enter URL of the lead to update (in http:// or https:// format e.g." + Fore.GREEN + "\nhttps://www.salesforce.com" + Style.RESET_ALL + "): ")
             if not validations.url_exists(company_url, lead_database):
-                print("Lead with this URL does not exist.")
+                print(Fore.RED + "Lead with this URL does not exist." + Style.RESET_ALL)
                 continue
 
             field = input("Select ONE field to update \n(name, company_name, email, role, assigned_to, status): ")
             new_value = input(f"Updated {field}: ")
 
             if field == "name" and not validations.name_validation(new_value):
-                print("Invalid - Name must only contain letters.")
+                print(Fore.RED + "Invalid - Name must only contain letters." + Style.RESET_ALL)
                 continue
 
             if field == "company_name" and not validations.company_name_validation(new_value):
-                print("Invalid - Enter company name longer than 0 characters.")
+                print(Fore.RED + "Invalid - Enter company name longer than 0 characters." + Style.RESET_ALL)
                 continue
 
             if field == "email" and not validations.email_validation(new_value):
-                print("Invalid - Enter a valid email address.")
+                print(Fore.RED + "Invalid - Enter a valid email address." + Style.RESET_ALL)
                 continue
 
             if field == "role" and not validations.role_validation(new_value):
-                print("Invalid - Role must only contain letters.")
+                print(Fore.RED + "Invalid - Role must only contain letters." + Style.RESET_ALL)
                 continue
 
             if field == "assigned_to" and not validations.assigned_to_validation(new_value):
-                print("Invalid - Sales representative name must be only letters")
+                print(Fore.RED + "Invalid - Sales representative name must be only letters" + Style.RESET_ALL)
                 continue
 
             if field == "status" and not validations.status_validation(new_value):
-                print("Invalid - Enter status 'qualified' or 'unqualified'")
+                print(Fore.RED + "Invalid - Enter status 'qualified' or 'unqualified'" + Style.RESET_ALL)
                 continue
 
             validations.confirmation_validation(
@@ -155,6 +158,7 @@ def main():
 
 #Option 5: Display all the leads
         elif choice == "5":
+            visual_seperator()
             data_operations.display_leads(lead_database)
 
 #Option 6: Search the lead list for specific lead details
@@ -165,7 +169,8 @@ def main():
 
 #Option 7: Exit
         elif choice == "7":
-            print("Exiting Sales CRM.")
+            visual_seperator()
+            print(Fore.GREEN + "Exiting LITESPEED Sales CRM." + Style.RESET_ALL)
             break
         else:
             validations.selection_invalid()

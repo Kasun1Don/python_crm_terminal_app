@@ -1,5 +1,6 @@
 import csv
 import pandas as pd
+from tabulate import tabulate
 from colorama import init, Fore, Style
 
 init()
@@ -26,12 +27,20 @@ def find_lead(company_url, lead_database="leads_appdatabase.csv"):
 def display_leads(lead_database="leads_appdatabase.csv"):
     try:
         df = pd.read_csv(lead_database)
-        df.fillna('', inplace=True)  # Replace NaN with an empty string
-        df_str = df.to_string(index=False, col_space=10)
-        print(df_str)
+        
+        # Select specific columns to display
+        selected_columns = ['company_url', 'company_name', 'assigned_to']
+        df_selected = df[selected_columns]
+        
+        # Fill NaN values with empty strings
+        df_selected.fillna('', inplace=True)
+        
+        # Use tabulate to format table
+        table_str = tabulate(df_selected, headers='keys', tablefmt='grid', showindex=False)
+        print(table_str)
 
     except Exception as e:
-        print(f"An Error Occurred with CSV: {e}")
+        print(f"An error occurred: {e}")
 
 
 #appends a new lead record to the csv file
