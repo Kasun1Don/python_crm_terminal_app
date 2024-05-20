@@ -4,7 +4,7 @@ import datetime
 #new lead instance with lead details
 class Lead:
     def __init__(self, name, company_name, company_url, email, role, assigned_to, status):
-        self.id = str(uuid.uuid4())
+        self.id = str(uuid.uuid4()) #gives a unique identifier to each lead
         self.name = name
         self.company_name = company_name
         self.company_url = company_url
