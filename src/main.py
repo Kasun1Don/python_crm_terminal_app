@@ -39,6 +39,13 @@ def main():
                 
 #Option 2: Add a new lead
         elif choice == "2":
+            company_url = input("Enter company URL: ")
+            company_name = input("Enter company name: ")
+            name = input("Enter lead's name (optional): ")
+            role = input("Enter lead's role (optional): ")
+            email = input("Enter lead's email (optional): ")
+            assigned_to = input("Enter lead owner's name: ")
+            status = input("Enter lead status (qualified/unqualified) (optional): ")
             
         
 
