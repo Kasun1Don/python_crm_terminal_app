@@ -23,8 +23,9 @@ def url_exists(company_url, lead_database="leads_appdatabase.csv"):
 def name_validation(name):
     return name.isalpha() if name else True
 
+#all new leads MUST have a company name
 def company_name_validation(company_name):
-    return len(company_name) > 0 if company_name else True
+    return len(company_name) > 0 if company_name else False
 
 #check if the email address is in the correct format
 def email_validation(email):

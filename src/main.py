@@ -47,10 +47,15 @@ def main():
             visual_seperator()
             while True:
                 company_url = input("Company URL (in http:// or https:// format e.g." + Fore.GREEN + "\nhttps://www.salesforce.com" + Style.RESET_ALL + "): ")
-                if validations.company_url_validation(company_url):
-                    break
-                else:
+
+                if not validations.company_url_validation(company_url):
                     print(Fore.RED + "Invalid - Enter company URL in either http:// or https:// format." + Style.RESET_ALL)
+                    continue
+                if validations.url_exists(company_url, lead_database):
+                    print(Fore.RED + "Invalid - A lead with this URL already exists." + Style.RESET_ALL)
+                    continue
+                break
+
 
             while True:
                 company_name = input("Company name: ")
@@ -93,10 +98,6 @@ def main():
                     break
                 else:
                     print(Fore.RED + "Invalid - Enter status 'qualified' or 'unqualified'." + Style.RESET_ALL)
-
-            if validations.url_exists(company_url, lead_database):
-                print(Fore.RED + "Invalid - A lead with this URL already exists." + Style.RESET_ALL)
-                continue
             
             validations.confirmation_validation(
                 "Add lead to database? (Y/N): ",
@@ -129,8 +130,16 @@ def main():
             if not validations.url_exists(company_url, lead_database):
                 print(Fore.RED + "Lead with this URL does not exist." + Style.RESET_ALL)
                 continue
+            
+            #loop until a valid field is entered
+            while True:
+                field = input("Select ONE field to update \n(name, company_name, email, role, assigned_to, status): ").strip().lower()
 
-            field = input("Select ONE field to update \n(name, company_name, email, role, assigned_to, status): ")
+                if field in ["name", "company_name", "email", "role", "assigned_to", "status"]:
+                    break
+                else:
+                    print(Fore.RED + "Invalid field. Choose from: name, company_name, email, role, assigned_to, status" + Style.RESET_ALL)
+
             new_value = input(f"Updated {field}: ")
 
             if field == "name" and not validations.name_validation(new_value):
