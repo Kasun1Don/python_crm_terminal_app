@@ -1,5 +1,8 @@
 import csv
 import pandas as pd
+from colorama import init, Fore, Style
+
+init()
 
 #searches for a lead in the CSV file based on the company URL and prints the lead's details if found
 def find_lead(company_url, lead_database="leads_appdatabase.csv"):
@@ -17,7 +20,7 @@ def find_lead(company_url, lead_database="leads_appdatabase.csv"):
                 print(f"Status: {row['status']}")
                 print(f"Timestamp: {row['timestamp']}")
                 return
-    print("No lead found for this company URL.")
+    print(Fore.RED + "No lead found for this company URL." + Style.RESET_ALL)
 
 #prints all leads from the CSV file to the console using pandas
 def display_leads(lead_database="leads_appdatabase.csv"):
@@ -60,6 +63,7 @@ def get_columns(lead_database="leads_appdatabase.csv"):
 def update_lead(company_url, field, new_value, lead_database="leads_appdatabase.csv"):
     updated = False
     lines = []
+    columns = get_columns(lead_database)
     with open(lead_database, "r") as readfile:
         reader = csv.DictReader(readfile)
         for row in reader:
@@ -69,7 +73,7 @@ def update_lead(company_url, field, new_value, lead_database="leads_appdatabase.
             lines.append(row)
     if updated:
         with open(lead_database, "w", newline='') as writefile:
-            writer = csv.DictWriter(writefile, fieldnames=get_columns(lead_database))
+            writer = csv.DictWriter(writefile, fieldnames=columns)
             writer.writeheader()
             writer.writerows(lines)
         return True

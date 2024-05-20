@@ -1,8 +1,11 @@
 import csv
 import re
+from colorama import init, Fore, Style
+
+init()
 
 def selection_invalid():
-    print("Invalid input, select from provided options")
+    print(Fore.RED + "Invalid input, select from provided options" + Style.RESET_ALL)
 
 def company_url_validation(company_url):
     return company_url.startswith("http://") or company_url.startswith("https://")
@@ -51,7 +54,7 @@ def confirmation_validation(prompt:str, feedback:str):
         else:
             print("Invalid input, enter Y or N")
 
-# Retrieve the assigned_to field for a given company URL
+# retrieve the assigned_to field for a given company URL
 def get_assigned_to(company_url, lead_database="leads_appdatabase.csv"):
     with open(lead_database) as f:
         reader = csv.DictReader(f)
