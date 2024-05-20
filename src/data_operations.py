@@ -55,3 +55,23 @@ def get_columns(lead_database="lead_database.csv"):
     with open(lead_database) as f:
         data = f.readline()
         return data.strip("\n").split(",")
+
+#edit existing lead details
+def update_lead(company_url, field, new_value, lead_database="leads_appdatabase.csv"):
+    updated = False
+    lines = []
+    with open(lead_database, "r") as readfile:
+        reader = csv.DictReader(readfile)
+        for row in reader:
+            if row["company_url"] == company_url:
+                row[field] = new_value
+                updated = True
+            lines.append(row)
+    if updated:
+        with open(lead_database, "w", newline='') as writefile:
+            writer = csv.DictWriter(writefile, fieldnames=get_columns(lead_database))
+            writer.writeheader()
+            writer.writerows(lines)
+        return True
+    else:
+        return False
