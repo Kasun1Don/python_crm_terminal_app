@@ -2,7 +2,7 @@ import csv
 import re
 
 def selection_invalid():
-    print("Invalid input, select from displayed options")
+    print("Invalid input, select from provided options")
 
 def company_url_validation(company_url):
     return company_url.startswith("http://") or company_url.startswith("https://")
@@ -31,10 +31,13 @@ def email_validation(email):
 def role_validation(role):
     return role.isalpha() if role else True
 
+#all new leads MUST be assigned to a sales rep
+def assigned_to_validation(assigned_to):
+    return assigned_to.isalpha() and len(assigned_to) > 0 if assigned_to else False
+
 #check if status is one of the accepted values
 def status_validation(status):
     return status in ["qualified", "unqualified", ""] #allows empty status for incomplete rows
-
 
 #prompt for confirmation before adding the lead
 def confirmation_validation(prompt:str, feedback:str):
