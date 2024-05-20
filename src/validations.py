@@ -43,7 +43,7 @@ def assigned_to_validation(assigned_to):
 def status_validation(status):
     return status in ["qualified", "unqualified", ""] #allows empty status for incomplete rows
 
-#prompt for confirmation before adding the lead
+#prompt for confirmation before adding the lead (converts to uppercase)
 def confirmation_validation(prompt:str, feedback:str):
     while True:
         confirmation = input(prompt).upper()
@@ -53,7 +53,7 @@ def confirmation_validation(prompt:str, feedback:str):
             print(feedback)
             exit()
         else:
-            print("Invalid input, enter Y or N")
+            print(Fore.RED + "Invalid input, enter Y or N" + Style.RESET_ALL)
 
 # retrieve the assigned_to field for a given company URL
 def get_assigned_to(company_url, lead_database="leads_appdatabase.csv"):
