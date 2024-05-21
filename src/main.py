@@ -8,7 +8,7 @@ init()
 def visual_seperator():
     print("\n")
 
-#menu options
+#display main menu options
 def display_options():
     print(Fore.BLUE + Style.BRIGHT + "\n LITESPEED CRM for Sales" + Style.RESET_ALL)
     visual_seperator()
@@ -26,17 +26,19 @@ def display_options():
 def main():
     lead_database = "leads_appdatabase.csv"
 
-#select menu option
+#prompt to select menu option
     while True:
         display_options()
         choice = input("Enter Menu Option Number: ")
 
-#Option 1: Check if a lead is already assigned to sales person
+#Option 1: Check if a lead is already assigned to a sales person
         if choice == "1":
             visual_seperator()
             company_url = input("Enter the URL (in http:// or https:// format e.g." + Fore.GREEN + "\nhttps://www.salesforce.com" + Style.RESET_ALL + "): ")
+            #check if URL is already assigned to a sales person using validation function
             assigned_to = validations.get_assigned_to(company_url, lead_database)
             if assigned_to:
+                visual_seperator()
                 print(Fore.RED + f"Lead is already assigned to {assigned_to}." + Style.RESET_ALL)
             else:
                 visual_seperator()
