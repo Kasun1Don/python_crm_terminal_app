@@ -211,12 +211,13 @@ def main():
             )
 
             # update the CRM database and provide feedback
-            if data_operations.update_lead(company_url, field, new_value, lead_database):
+            try:
+                data_operations.update_lead(company_url, field, new_value, lead_database)
                 visual_seperator()
                 print(Fore.GREEN + f"Lead {field} updated successfully." + Style.RESET_ALL)
-            else:
+            except Exception:
                 visual_seperator()
-                print(Fore.RED + "Failed to update lead. Please restart program and try again." + Style.RESET_ALL)
+                print(Fore.RED + "Error - Failed to update lead. Please restart program and try again" + Style.RESET_ALL)
 
 # Option 5: Display all the leads
         elif choice == "5":

@@ -11,4 +11,4 @@ id,name,company_name,company_url,email,role,assigned_to,status,timestamp
 ,,,https://www.zendesk.com,,,Don,,
 ,,,https://www.tanda.co,,,Jake,,
 aa56b3aa-1b6e-46e9-8853-42b7660f1188,James,Vercel,https://www.vercel.com,james@vercel.com,CTO,Jake,unqualified,2024-05-20 23:11:50.112245
-a3e9c27d-00fb-439c-aed1-65c6f2402b6d,John,Miro,https://www.miro.com,,TechLead,Jake,qualified,2024-05-21 12:42:12.057500
+a3e9c27d-00fb-439c-aed1-65c6f2402b6d,John,Miro,https://www.miro.com,,CTO,Jake,qualified,2024-05-21 12:42:12.057500

@@ -90,6 +90,7 @@ def update_lead(company_url, field, new_value, lead_database="leads_appdatabase.
             writer = csv.DictWriter(writefile, fieldnames=columns)
             writer.writeheader()
             writer.writerows(lines)
+            
         return True
     else:
         return False
