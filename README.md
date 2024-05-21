@@ -23,8 +23,13 @@ The CRM application's 6 key features are described below in the order of the app
 
 This feature allows the user to check if a lead is already assigned to a sales representative by entering the company's URL. 
 
-The URL entered by the user is stored in a local variable. This is then validated to ensure it follows the correct format (http:// or https://). This is done using a validation function.
+The URL entered by the user is stored in a local variable. This is then validated to ensure it follows the correct format (http:// or https://), using a validation function from the validations.py module.
 
+A `while` loop is used to prompt the user for a valid URL until a correct one is entered. An `if` condition checks if the URL exists in the database.
+
+Error Handling: If the URL format is invalid, an error message is displayed and the loop continues to prompt the user until a valid URL is entered.
+
+If the URL is found in the database, the assigned sales representative's name is displayed. If not, a message indicating the lead is available is displayed.
 
 ### Feature 2: Add New Lead
 
@@ -144,6 +149,7 @@ The Python application requires the following packages:
 * datetime: for handling date and time
 
 The package dependencies installed when running the program are as follows:
+
 ```
 colorama==0.4.6
 numpy==1.26.4
@@ -154,6 +160,7 @@ six==1.16.0
 tabulate==0.9.0
 tzdata==2024.1
 ```
+
 ### Modules
 
 **lead.py**: This module defines the Lead class, which represents a lead attributes and a method for displaying the lead's details.
