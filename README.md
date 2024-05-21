@@ -25,6 +25,9 @@ The implementation plan included cards for each Key Feature, with a due date and
 
 ### Feature Implementation Checklists:
 
+In order of the terminal application's main menu options:
+
+
 ### Kanban Progress Tracking Screenshots:
 
 The following screenshots were taken over the course of the application development period:
@@ -48,10 +51,13 @@ In the Terminal:
 3. Navigate to the directory where the file was unzipped. Change directory (cd) to the `terminal_app-main` folder.
 
 4. Change permissions to make the script executable by entering:
+
 ```bash
 chmod +x run_crm.sh
 ```
+
 5. Run the script by entering the following command:
+
 ```bash
 ./run_crm.sh
 ```
@@ -60,7 +66,9 @@ chmod +x run_crm.sh
 
 7. The terminal application will prompt for input.
 
-8. To exit the application at any time use `Ctrl + C`.
+8. On MacOS: for the best user experience, drag the corner of the terminal window to set width & height to at least `100 x 40`.
+
+9. To exit the application at any time use `Ctrl + C`.
 
 Note: 
 
