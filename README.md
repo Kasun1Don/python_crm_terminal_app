@@ -18,11 +18,21 @@ The terminal application has been written in Python following the [PEP 8](https:
 ## Key Features
 
 ## Implementation Plan
-Kanban board 
+
+The implementation plan was tracked using a Trello Kanban board.
+
+The implementation plan included cards for each Key Feature, with a due date and a checklist of tasks in order of priority.
 
 ### Feature Implementation Checklists:
 
 ### Kanban Progress Tracking Screenshots:
+
+The following screenshots were taken over the course of the application development period:
+
+![1](/docs/Trello_1.png)
+![2](/docs/Trello_2.png)
+![3](/docs/Trello_3.png)
+![4](/docs/Trello_4.png)
 
 ## Installation Instructions
 
@@ -68,7 +78,9 @@ Note:
 
 ## System Requirements
 
-The application requires Python version 3.10 or above to run. Check your machine's Python version or if it has python installed by trying the following terminal commands:
+The application requires Python version 3.10 or above to run. 
+
+Check your machine's Python version or if it has python installed by trying the following terminal commands:
 
 ```bash
 python --version
