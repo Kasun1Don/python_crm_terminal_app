@@ -75,12 +75,39 @@ Error Handling: If the entered URL does not exist, an error message is displayed
 
 ### Feature 4: Modify Existing Lead Details
 
+This feature allows the user to modify details of an existing lead by specifying the company's URL and the database field to update.
 
+The URL and new field value are stored in local variables. Then both the URL and the new field value are validated. A `while` loop prompts for the URL until a valid one is provided.
+
+Another `while` loop ensures the field the user wants to modify is one of the fields allowed to be edited (name, company_name, email, role, assigned_to, status).
+
+`if` conditions check the validity of the user's new field value inputs.
+
+The lead's details are updated in the database if all validations pass.The database operation is then confirmed, displaying a success message if the insert is successful or an error message if any issues occur during the process.
+
+Error Handling: Invalid inputs are caught and appropriate error messages are displayed.
 
 ### Feature 5: Display All Leads
 
+This feature displays all leads from the database in a tabulated format.
+
+The lead data in the CSV database is loaded into a structured table format in memory using the `pandas` module. A try-except block is used to catch any errors during this reading process.
+
+The leads are then displayed in table format using the `tabulate` function for better readability.
+
+Error Handling: If an error occurs while reading the CSV, an error message is displayed.
+
 ### Feature 6: Search Lead List for Specific Lead Details
 
+This feature allows the user to view the field values of a specific lead by entering the company's URL.
+
+The URL entered by the user is stored in a local variable. Then the URL format is validated.
+
+A `while` loop prompts for a valid URL until one is provided. Then an `if` condition checks if the URL exists in the database.
+
+When a lead is found, its details are displayed using the __str__ method of the Lead class, defined in the `lead.py` module.
+
+Error Handling: Invalid URL formats and non-existent URLs result in error messages.
 
 ## Implementation Plan
 
