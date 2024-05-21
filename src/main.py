@@ -138,7 +138,7 @@ def main():
                 visual_seperator()
                 # prompt for confirmation before permanently deleting the lead
                 validations.confirmation_validation(
-                    (Fore.RED + "Do you want to permanently delete this lead? (Y/N): " + Style.RESET_ALL),
+                    (Fore.RED + "\nDo you want to permanently delete this lead? (Y/N): " + Style.RESET_ALL),
                     "Removal cancelled."
                 )
 
@@ -198,7 +198,7 @@ def main():
             # confirm the user wants to update CRM field
             visual_seperator()
             validations.confirmation_validation(
-                (Fore.RED + f"Do you want to update the {field} to '{new_value}'? (Y/N): " + Style.RESET_ALL),
+                (Fore.RED + f"\nDo you want to update the {field} to '{new_value}'? (Y/N): " + Style.RESET_ALL),
                 "Update cancelled."
             )
 
@@ -224,7 +224,7 @@ def main():
             #search for specific lead detail fields in the database
             data_operations.find_lead(company_url, lead_database)
 
-# Option 7: Exit
+# Option 7: Exit terminal application
         elif choice == "7":
             visual_seperator()
             print(Fore.GREEN + "Exiting LITESPEED Sales CRM." + Style.RESET_ALL)
