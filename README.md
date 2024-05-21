@@ -27,15 +27,17 @@ The URL entered by the user is stored in a local variable. This is then validate
 
 A `while` loop is used to prompt the user for a valid URL until a correct one is entered. An `if` condition checks if the URL exists in the database.
 
-Error Handling: If the URL format is invalid, an error message is displayed and the loop continues to prompt the user until a valid URL is entered.
-
 If the URL is found in the database, the assigned sales representative's name is displayed. If not, a message indicating the lead is available is displayed.
+
+Error Handling: If the URL format is invalid, an error message is displayed and the loop continues to prompt the user until a valid URL is entered.
 
 ### Feature 2: Add New Lead
 
 This feature allows the user to add a new lead to the database by providing details for the database fields.
 
-The database is in a file named `leads_appdatabase.csv`. It contains the following fields:
+The database is in a file named `leads_appdatabase.csv`. 
+
+It contains the following fields:
 
 `company_url`: Must have valid URL format
 
@@ -51,19 +53,29 @@ The database is in a file named `leads_appdatabase.csv`. It contains the followi
 
 `status` (optional): either 'qualified' or 'unqualified' lead
 
+Each piece of new lead information is stored in respective local variables. Then each input is validated using respective validation functions from `validations.py` module.
 
-Variable Usage: Each piece of lead information (e.g., company_url, company_name, name, role, email, assigned_to, status) is stored in respective local variables.
-Validation: Each input is validated using respective validation functions to ensure data integrity.
-Loop and Conditional Control:
-Multiple while loops ensure that each input is valid before proceeding to the next.
-if conditions check for specific validation errors (e.g., existing URL, invalid email format).
-Error Handling: Appropriate error messages are displayed for each invalid input, and the user is prompted to re-enter the data until it is correct.
-Database Insertion: Upon successful validation, a new Lead object is created and added to the database.
-Output: Confirmation messages are displayed for successful addition or if the operation is canceled.
+Multiple while loops ensure that each input is valid before proceeding to the next. `if` conditions check for specific validation errors (e.g., existing URL, invalid email format).
+
+Upon successful validation, a new Lead object is created and added to the database. The database operation is then confirmed, displaying a success message if the insert is successful or an error message if any issues occur during the process.
+
+Error Handling: Error messages are displayed for each invalid input, and the user is prompted to re-enter the data until it is valid.
 
 ### Feature 3: Remove Lead
 
+This feature allows the user to remove an existing lead from the database by entering the company's URL. 
+
+The URL entered by the user is stored in a local variable and then the URL is validated to ensure it exists in the database. 
+
+An `if` condition checks if the URL exists. Then a confirmation prompt uses an `if` condition to confirm the deletion.
+
+The lead is removed from the database if confirmed. Success or error messages are displayed based on the operation's result.
+
+Error Handling: If the entered URL does not exist, an error message is displayed.
+
 ### Feature 4: Modify Existing Lead Details
+
+
 
 ### Feature 5: Display All Leads
 
