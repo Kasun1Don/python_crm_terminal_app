@@ -25,7 +25,14 @@ The implementation plan included cards for each Key Feature, with a due date and
 
 ### Feature Implementation Checklists:
 
-In order of the terminal application's main menu options:
+Feature checklists organized by main menu options:
+
+![1](/docs/feature_1.png)
+![2](/docs/feature_2.png)
+![3](/docs/feature_3.png)
+![4](/docs/feature_4.png)
+![5](/docs/feature_5.png)
+![6](/docs/feature_6.png)
 
 
 ### Kanban Progress Tracking Screenshots:
