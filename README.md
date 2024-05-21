@@ -43,7 +43,7 @@ chmod +x run_crm.sh
 ./run_crm.sh
 ```
 
-6. The script will install all required dependencies listed in the Dependencies section.
+6. The script will install all required dependencies listed in the Dependencies section below.
 
 7. The terminal application will prompt for input.
 
@@ -64,13 +64,13 @@ Note:
     (the application uses this URL format)
     ```
 
-* if an error message says "This program runs on Python3, but it looks like Python3 is not installed." refer to System Requirements below:
+* if an error message says "This program runs on Python3, but it looks like Python3 is not installed.", refer to System Requirements below:
 
 ## System Requirements
 
 The application requires Python version 3.10 or above to run. Check your machine's Python version or if it has python installed by trying the following terminal commands:
 
-```
+```bash
 python --version
 
 python3 --version
