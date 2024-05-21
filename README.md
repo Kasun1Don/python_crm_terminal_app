@@ -57,9 +57,26 @@ python3 --version
 If both return an error message or the version requires updating, follow the Python installation guide to install or upgrade to the latest version of Python.
 
 
-## Dependencies
+## Dependencies and Packages
+The Python application requires the following packages:
 
-## Packages
+* colorama: for colored text in the terminal
+* pandas: for reading and manipulating CSV files
+* tabulate: for formatting tables in the terminal
+* uuid: for generating unique identifiers
+* datetime: for handling date and time
+
+The package dependencies installed when running the program are as follows:
+```
+colorama==0.4.6
+numpy==1.26.4
+pandas==2.2.2
+python-dateutil==2.9.0.post0
+pytz==2024.1
+six==1.16.0
+tabulate==0.9.0
+tzdata==2024.1
+```
 
 ## References
 
