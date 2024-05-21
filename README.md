@@ -23,7 +23,7 @@ The CRM application's 6 key features are described below in the order of the app
 
 This feature allows the user to check if a lead is already assigned to a sales representative by entering the company's URL. 
 
-The URL entered by the user is stored in a local variable. This is then validated to ensure it follows the correct format (http:// or https://), using a validation function from the validations.py module.
+The URL entered by the user is stored in a local variable. This is then validated to ensure it follows the correct format (http:// or https://), using a validation function from the `validations.py` module.
 
 A `while` loop is used to prompt the user for a valid URL until a correct one is entered. An `if` condition checks if the URL exists in the database.
 
@@ -32,6 +32,34 @@ Error Handling: If the URL format is invalid, an error message is displayed and 
 If the URL is found in the database, the assigned sales representative's name is displayed. If not, a message indicating the lead is available is displayed.
 
 ### Feature 2: Add New Lead
+
+This feature allows the user to add a new lead to the database by providing details for the database fields.
+
+The database is in a file named `leads_appdatabase.csv`. It contains the following fields:
+
+`company_url`: Must have valid URL format
+
+`company_name`: Must be non-empty
+
+`name` (optional): lead's name
+
+`email` (optional): lead's email in valid format
+
+`role` (optional): lead's role in company
+
+`assigned_to`: Must be assigned to a sales representative's name
+
+`status` (optional): either 'qualified' or 'unqualified' lead
+
+
+Variable Usage: Each piece of lead information (e.g., company_url, company_name, name, role, email, assigned_to, status) is stored in respective local variables.
+Validation: Each input is validated using respective validation functions to ensure data integrity.
+Loop and Conditional Control:
+Multiple while loops ensure that each input is valid before proceeding to the next.
+if conditions check for specific validation errors (e.g., existing URL, invalid email format).
+Error Handling: Appropriate error messages are displayed for each invalid input, and the user is prompted to re-enter the data until it is correct.
+Database Insertion: Upon successful validation, a new Lead object is created and added to the database.
+Output: Confirmation messages are displayed for successful addition or if the operation is canceled.
 
 ### Feature 3: Remove Lead
 
@@ -163,11 +191,11 @@ tzdata==2024.1
 
 ### Modules
 
-**lead.py**: This module defines the Lead class, which represents a lead attributes and a method for displaying the lead's details.
+**`lead.py`**: This module defines the Lead class, which represents a lead attributes and a method for displaying the lead's details.
 
-**data_operations.py**: This module contains functions for performing CRUD (Create, Read, Update, Delete) operations on the lead database, such as adding new leads and removing leads.
+**`data_operations.py`**: This module contains functions for performing CRUD (Create, Read, Update, Delete) operations on the lead database, such as adding new leads and removing leads.
 
-**validations.py**: This module provides validation functions to ensure that user inputs conform to expected formats and criteria.
+**`validations.py`**: This module provides validation functions to ensure that user inputs conform to expected formats and criteria.
 
 ## References
 
