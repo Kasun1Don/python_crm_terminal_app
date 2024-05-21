@@ -27,7 +27,7 @@ class Lead:
                 f"Status: {self.status}\n"
                 f"Timestamp: {self.timestamp}")
 
-# test if code works
+# to test code:
 # lead = Lead(
 #     name="John Doe",
 #     company_name="Example",
