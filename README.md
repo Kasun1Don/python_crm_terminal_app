@@ -117,7 +117,7 @@ The implementation plan included cards for each Key Feature, with a due date and
 
 ### Feature Implementation Checklists:
 
-Feature checklists organized by the application's main menu options:
+Feature checklists organized by the order of application's main menu options:
 
 ![1](/docs/feature_1.png)
 ![2](/docs/feature_2.png)
@@ -197,6 +197,7 @@ python --version
 
 python3 --version
 ```
+
 If both return an error message or the version requires updating, follow this [Python installation guide](https://wiki.python.org/moin/BeginnersGuide/Download) to install or upgrade to the latest version of Python.
 
 ### Hardware Requirements
@@ -238,3 +239,20 @@ tzdata==2024.1
 
 ## References
 
+BeginnersGuide/Download (2022) BeginnersGuide/Download - Python Wiki. Available at: https://wiki.python.org/moin/BeginnersGuide/Download (Accessed: 20 May 2024).
+
+Colorama (2022) PyPI. Available at: https://pypi.org/project/colorama/ (Accessed: 20 May 2024).
+
+CSV - csv file reading and writing (2024) Python documentation. Available at: https://docs.python.org/3/library/csv.html (Accessed: 20 May 2024).
+
+GeeksforGeeks (2024) Separation of concerns (SoC). Available at: https://www.geeksforgeeks.org/separation-of-concerns-soc/ (Accessed: 20 May 2024).
+
+Pandas Documentation (2024) pandas: powerful data analysis tools. Available at: https://pandas.pydata.org/docs/ (Accessed: 20 May 2024).
+
+PEP 8 – style guide for python code (2023) Python Enhancement Proposals (PEPs). Available at: https://peps.python.org/pep-0008/ (Accessed: 20 May 2024).
+
+Stack Overflow (2024) How to create a GUID/UUID in Python. Available at: https://stackoverflow.com/questions/534839/how-to-create-a-guid-uuid-in-python (Accessed: 21 May 2024).
+
+Tabulate (2024) PyPI. Available at: https://pypi.org/project/tabulate/ (Accessed: 20 May 2024).
+
+UUID - UUID objects according to RFC 4122 (2024) Python documentation. Available at: https://docs.python.org/3/library/uuid.html (Accessed: 19 May 2024).
