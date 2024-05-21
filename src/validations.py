@@ -5,12 +5,12 @@ from colorama import init, Fore, Style
 init()
 
 def selection_invalid():
-    print(Fore.RED + "Invalid input, select from provided options" + Style.RESET_ALL)
+    print(Fore.RED + "\nInvalid input, select from provided options" + Style.RESET_ALL)
 
 def company_url_validation(company_url):
     return company_url.startswith("http://") or company_url.startswith("https://")
 
-#check if a given company url exists in the lead database CSV
+# check if a given company url exists in the lead database CSV
 def url_exists(company_url, lead_database="leads_appdatabase.csv"):
     with open (lead_database) as f:
         reader = csv.DictReader(f)
@@ -19,15 +19,15 @@ def url_exists(company_url, lead_database="leads_appdatabase.csv"):
                 return True
     return False
 
-#check if input name contains only alphabetical characters
+# check if input name contains only alphabetical characters
 def name_validation(name):
     return name.isalpha() if name else True
 
-#all new leads MUST have a company name
+# all new leads MUST have a company name
 def company_name_validation(company_name):
     return len(company_name) > 0 if company_name else False
 
-#check if the email address is in the correct format
+# check if the email address is in the correct format
 def email_validation(email):
     return re.match(r"[^@]+@[^@]+\.[^@]+", email) if email else True
 
@@ -35,15 +35,15 @@ def email_validation(email):
 def role_validation(role):
     return role.isalpha() if role else True
 
-#all new leads MUST be assigned to a sales rep
+# all new leads MUST be assigned to a sales rep
 def assigned_to_validation(assigned_to):
     return assigned_to.isalpha() and len(assigned_to) > 0 if assigned_to else False
 
-#check if status is one of the accepted values
+# check if status is one of the accepted values
 def status_validation(status):
     return status in ["qualified", "unqualified", ""] #allows empty status for incomplete rows
 
-#prompt for confirmation before adding the lead (converts to uppercase)
+# prompt for confirmation before adding the lead (converts to uppercase)
 def confirmation_validation(prompt:str, feedback:str):
     while True:
         confirmation = input(prompt).upper()

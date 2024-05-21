@@ -1,10 +1,10 @@
 import uuid
 import datetime
 
-#new lead instance with lead details
+# new lead instance with lead details
 class Lead:
     def __init__(self, name, company_name, company_url, email, role, assigned_to, status):
-        self.id = str(uuid.uuid4()) #gives a unique identifier to each lead
+        self.id = str(uuid.uuid4()) # gives a unique identifier to each lead
         self.name = name
         self.company_name = company_name
         self.company_url = company_url
@@ -14,7 +14,7 @@ class Lead:
         self.status = status
         self.timestamp = datetime.datetime.now() #record the current date and time 
 
-#provide a string representation of the lead instance to display lead details in terminal app
+# provide a string representation of the lead instance to display lead details in terminal app
     def __str__(self):
             return (
                 f"ID: {self.id}\n"
@@ -27,7 +27,7 @@ class Lead:
                 f"Status: {self.status}\n"
                 f"Timestamp: {self.timestamp}")
 
-#test if code works
+# test if code works
 # lead = Lead(
 #     name="John Doe",
 #     company_name="Example",

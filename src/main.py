@@ -5,10 +5,11 @@ import data_operations
 
 init()
 
+# visual separator for improved readability
 def visual_seperator():
     print("\n")
 
-#display main menu options
+# display main menu options
 def display_options():
     print(Fore.BLUE + Style.BRIGHT + "\n LITESPEED CRM for Sales" + Style.RESET_ALL)
     visual_seperator()
@@ -26,16 +27,25 @@ def display_options():
 def main():
     lead_database = "leads_appdatabase.csv"
 
-#prompt to select menu option
+# prompt to select menu option
     while True:
         display_options()
         choice = input("Enter Menu Option Number: ")
 
-#Option 1: Check if a lead is already assigned to a sales person
+# Option 1: Check if a lead is already assigned to a sales person
         if choice == "1":
             visual_seperator()
-            company_url = input("Enter the URL (in http:// or https:// format e.g." + Fore.GREEN + "\nhttps://www.salesforce.com" + Style.RESET_ALL + "): ")
-            #check if URL is already assigned to a sales person using validation function
+            # prompt user to enter the lead's company URL
+            while True:
+                company_url = input("Enter the URL (in http:// or https:// format e.g." + Fore.GREEN + "\nhttps://www.salesforce.com" + Style.RESET_ALL + "): ")
+
+                    # validate the URL format
+                if not validations.company_url_validation(company_url):
+                    print(Fore.RED + "Invalid - Enter company URL in either http:// or https:// format." + Style.RESET_ALL)
+                    continue
+                break
+            
+            # check if URL is already assigned to a sales person using validation function
             assigned_to = validations.get_assigned_to(company_url, lead_database)
             if assigned_to:
                 visual_seperator()
@@ -44,21 +54,25 @@ def main():
                 visual_seperator()
                 print(Fore.GREEN + "This lead is available to be assigned." + Style.RESET_ALL)
                 
-#Option 2: Add a new lead
+# Option 2: Add a new lead
         elif choice == "2":
             visual_seperator()
             while True:
+                # prompt user to enter the lead's company URL
                 company_url = input("Company URL (in http:// or https:// format e.g." + Fore.GREEN + "\nhttps://www.salesforce.com" + Style.RESET_ALL + "): ")
 
                 if not validations.company_url_validation(company_url):
+                    visual_seperator()
                     print(Fore.RED + "Invalid - Enter company URL in either http:// or https:// format." + Style.RESET_ALL)
                     continue
+                # check if the URL already exists in the CRM database
                 if validations.url_exists(company_url, lead_database):
+                    visual_seperator()
                     print(Fore.RED + "Invalid - A lead with this URL already exists." + Style.RESET_ALL)
                     continue
                 break
-
-
+            
+        # prompts user to enter new lead's details, validating each input
             while True:
                 company_name = input("Company name: ")
                 if validations.company_name_validation(company_name):
@@ -101,39 +115,51 @@ def main():
                 else:
                     print(Fore.RED + "Invalid - Enter status 'qualified' or 'unqualified'." + Style.RESET_ALL)
             
+            # confirm the user wants to add the lead to the CRM
+            visual_seperator()
             validations.confirmation_validation(
-                "Add lead to database? (Y/N): ",
-                "Lead not created"
+                (Fore.BLUE + "Add lead to CRM? (Y/N): " + Style.RESET_ALL),
+                (Fore.RED + "Lead not created" + Style.RESET_ALL)
             )
 
+            # create new lead object
             new_lead = Lead(name, company_name, company_url, email, role, assigned_to, status)
+            # add the lead to the CRM database
             data_operations.insert_lead(new_lead.__dict__, lead_database)
+            visual_seperator()
             print(Fore.GREEN + "Lead added successfully." + Style.RESET_ALL)
         
-#Option 3: Remove a lead
+# Option 3: Remove a lead
         elif choice == "3":
             visual_seperator
+            # prompt user to enter the lead's company URL
             company_url = input("Enter company URL to remove lead (in http:// or https:// format e.g." + Fore.GREEN + "\nhttps://www.salesforce.com" + Style.RESET_ALL + "): ")
             if validations.url_exists(company_url, lead_database):
+                visual_seperator()
+                # prompt for confirmation before permanently deleting the lead
                 validations.confirmation_validation(
-                    "Do you want to permanently delete this lead? (Y/N): ",
+                    (Fore.RED + "Do you want to permanently delete this lead? (Y/N): " + Style.RESET_ALL),
                     "Removal cancelled."
                 )
+
+                # remove the lead from the CRM database
                 data_operations.remove_lead(company_url, lead_database)
-                print("Lead deleted successfully.")
+                visual_seperator()
+                print(Fore.GREEN + "Lead deleted successfully." + Style.RESET_ALL)
             else:
                 visual_seperator()
                 print(Fore.RED + "Lead with this URL does not exist. " + Style.RESET_ALL)
         
-#Option 4: Modify existing lead details
+# Option 4: Modify existing lead details
         elif choice == "4":
             visual_seperator()
+            # prompt user to enter the lead's company URL
             company_url = input("Enter URL of the lead to update (in http:// or https:// format e.g." + Fore.GREEN + "\nhttps://www.salesforce.com" + Style.RESET_ALL + "): ")
             if not validations.url_exists(company_url, lead_database):
                 print(Fore.RED + "Lead with this URL does not exist." + Style.RESET_ALL)
                 continue
             
-            #loop until a valid field is entered
+            # loop until a valid field is entered
             while True:
                 field = input("Select ONE field to update \n(name, company_name, email, role, assigned_to, status): ").strip().lower()
 
@@ -142,6 +168,7 @@ def main():
                 else:
                     print(Fore.RED + "Invalid field. Choose from: name, company_name, email, role, assigned_to, status" + Style.RESET_ALL)
 
+            # prompts user to enter the new value for the selected field and validates input
             new_value = input(f"Updated {field}: ")
 
             if field == "name" and not validations.name_validation(new_value):
@@ -168,8 +195,9 @@ def main():
                 print(Fore.RED + "Invalid - Enter status 'qualified' or 'unqualified'" + Style.RESET_ALL)
                 continue
 
+            # confirm the user wants to update CRM field
             validations.confirmation_validation(
-                f"Do you want to update the {field} to '{new_value}'? (Y/N): ",
+                (Fore.RED + f"Do you want to update the {field} to '{new_value}'? (Y/N): " + Style.RESET_ALL),
                 "Update cancelled."
             )
 
@@ -179,18 +207,19 @@ def main():
             else:
                 print("Failed to update lead.")
 
-#Option 5: Display all the leads
+# Option 5: Display all the leads
         elif choice == "5":
             visual_seperator()
             data_operations.display_leads(lead_database)
 
-#Option 6: Search the lead list for specific lead details
+# Option 6: Search the lead list for specific lead details
         elif choice == "6":
             visual_seperator()
+            # prompt user for lead's company URL
             company_url = input("Enter company URL(in http:// or https:// format e.g." + Fore.GREEN + "\nhttps://www.salesforce.com" + Style.RESET_ALL + "): ")
             data_operations.find_lead(company_url, lead_database)
 
-#Option 7: Exit
+# Option 7: Exit
         elif choice == "7":
             visual_seperator()
             print(Fore.GREEN + "Exiting LITESPEED Sales CRM." + Style.RESET_ALL)
