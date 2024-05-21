@@ -5,7 +5,7 @@ from colorama import init, Fore, Style
 init()
 
 def selection_invalid():
-    print(Fore.RED + "\nInvalid input, select from provided options" + Style.RESET_ALL)
+    print(Fore.RED + "\nInvalid input, select from provided menu options" + Style.RESET_ALL)
 
 def company_url_validation(company_url):
     return company_url.startswith("http://") or company_url.startswith("https://")

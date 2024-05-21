@@ -10,14 +10,16 @@ fi
 
 cd ./src || { echo "Error: src directory not found in the current directory."; exit 1; }
 
-echo "Opening LITESPEED CRM for Sales..."
+echo "LITESPEED CRM for Sales"
 
 if [ ! -d ".venv" ]; then
   python3 -m venv .venv
 fi
 
 source .venv/bin/activate
+echo "installing LITESPEED CRM requirements..."
 pip3 install -r ./requirements.txt
+echo "opening LITESPEED CRM for Sales..."
 python3 main.py
 deactivate
 
