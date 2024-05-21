@@ -23,7 +23,7 @@ def find_lead(company_url, lead_database="leads_appdatabase.csv"):
                 )
                 print(lead)
                 return
-    print(Fore.RED + "No lead found for this company URL." + Style.RESET_ALL)
+    print(Fore.RED + "\nNo lead found for this company URL." + Style.RESET_ALL)
 
 # prints all leads from the CSV file to the console using pandas
 def display_leads(lead_database="leads_appdatabase.csv"):
@@ -42,7 +42,7 @@ def display_leads(lead_database="leads_appdatabase.csv"):
         print(table_str)
 
     except Exception:
-        print(Fore.RED + "An error occurred, please restart program" + Style.RESET_ALL)
+        print(Fore.RED + "\nAn error occurred, please restart program" + Style.RESET_ALL)
 
 
 # appends a new lead record to the csv file

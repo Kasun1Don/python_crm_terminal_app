@@ -196,20 +196,24 @@ def main():
                 continue
 
             # confirm the user wants to update CRM field
+            visual_seperator()
             validations.confirmation_validation(
                 (Fore.RED + f"Do you want to update the {field} to '{new_value}'? (Y/N): " + Style.RESET_ALL),
                 "Update cancelled."
             )
 
+            # update the CRM database and provide feedback
             if data_operations.update_lead(company_url, field, new_value, lead_database):
                 visual_seperator()
                 print(Fore.GREEN + f"Lead {field} updated successfully." + Style.RESET_ALL)
             else:
-                print("Failed to update lead.")
+                visual_seperator()
+                print(Fore.RED + "Failed to update lead." + Style.RESET_ALL)
 
 # Option 5: Display all the leads
         elif choice == "5":
             visual_seperator()
+            #display all leads in formatted table using database functions
             data_operations.display_leads(lead_database)
 
 # Option 6: Search the lead list for specific lead details
@@ -217,6 +221,7 @@ def main():
             visual_seperator()
             # prompt user for lead's company URL
             company_url = input("Enter company URL(in http:// or https:// format e.g." + Fore.GREEN + "\nhttps://www.salesforce.com" + Style.RESET_ALL + "): ")
+            #search for specific lead detail fields in the database
             data_operations.find_lead(company_url, lead_database)
 
 # Option 7: Exit

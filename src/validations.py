@@ -53,7 +53,7 @@ def confirmation_validation(prompt:str, feedback:str):
             print(feedback)
             exit()
         else:
-            print(Fore.RED + "Invalid input, enter Y or N" + Style.RESET_ALL)
+            print(Fore.RED + "\nInvalid input, enter Y or N" + Style.RESET_ALL)
 
 # retrieve the assigned_to field for a given company URL
 def get_assigned_to(company_url, lead_database="leads_appdatabase.csv"):
