@@ -2,7 +2,7 @@
 
 This application is a Customer Relationship Management (CRM) system that helps businesses efficiently manage and store customer data. Developed from my experience in software sales, this application solves a problem I encountered in my previous role.
 
-It allows sales development representatives to quickly identify if a lead has already been assigned to a different team member by entering the company URL. The application includes essential CRM functionality to add new leads, edit existing leads, remove leads, and search/display lead information.
+It allows sales development representatives to quickly identify if a lead has already been assigned to a different team member by entering the company URL. The application includes essential CRM functionality to add new leads, edit existing leads, remove leads, and search/display lead information. 
 
 ## Link to GitHub Repository
 
@@ -17,6 +17,26 @@ The terminal application has been written in Python following the [PEP 8](https:
 
 ## Key Features
 
+The CRM application's 6 key features are described below in the order of the application's main menu:
+
+### Feature 1: Check Lead Ownership
+
+This feature allows the user to check if a lead is already assigned to a sales representative by entering the company's URL. 
+
+The URL entered by the user is stored in a local variable. This is then validated to ensure it follows the correct format (http:// or https://). This is done using a validation function.
+
+
+### Feature 2: Add New Lead
+
+### Feature 3: Remove Lead
+
+### Feature 4: Modify Existing Lead Details
+
+### Feature 5: Display All Leads
+
+### Feature 6: Search Lead List for Specific Lead Details
+
+
 ## Implementation Plan
 
 The implementation plan was tracked using a Trello Kanban board.
@@ -25,7 +45,7 @@ The implementation plan included cards for each Key Feature, with a due date and
 
 ### Feature Implementation Checklists:
 
-Feature checklists organized by main menu options:
+Feature checklists organized by the application's main menu options:
 
 ![1](/docs/feature_1.png)
 ![2](/docs/feature_2.png)
@@ -73,7 +93,7 @@ chmod +x run_crm.sh
 
 7. The terminal application will prompt for input.
 
-8. On MacOS: for the best user experience, drag the corner of the terminal window to set width & height to at least `100 x 40`.
+8. On macOS: for the best user experience, drag the corner of the terminal window to set width & height to at least `100 x 40`.
 
 9. To exit the application at any time use `Ctrl + C`.
 
@@ -107,8 +127,13 @@ python3 --version
 ```
 If both return an error message or the version requires updating, follow this [Python installation guide](https://wiki.python.org/moin/BeginnersGuide/Download) to install or upgrade to the latest version of Python.
 
+### Hardware Requirements
 
-## Dependencies and Packages
+- Minimum 2GB of RAM
+
+- Machine with a modern operating system like Windows, macOS or Linux
+
+## Dependencies, Packages and Modules
 
 The Python application requires the following packages:
 
@@ -129,6 +154,13 @@ six==1.16.0
 tabulate==0.9.0
 tzdata==2024.1
 ```
+### Modules
+
+**lead.py**: This module defines the Lead class, which represents a lead attributes and a method for displaying the lead's details.
+
+**data_operations.py**: This module contains functions for performing CRUD (Create, Read, Update, Delete) operations on the lead database, such as adding new leads and removing leads.
+
+**validations.py**: This module provides validation functions to ensure that user inputs conform to expected formats and criteria.
 
 ## References
 
