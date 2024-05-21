@@ -31,9 +31,11 @@ The following screenshots were taken over the course of the application developm
 
 <img src="/docs/Trello_1.png" width="500" height="auto">
 
-![2](/docs/Trello_2.png)
-![3](/docs/Trello_3.png)
-![4](/docs/Trello_4.png)
+<img src="/docs/Trello_2.png" width="500" height="auto">
+
+<img src="/docs/Trello_3.png" width="500" height="auto">
+
+<img src="/docs/Trello_4.png" width="500" height="auto">
 
 ## Installation Instructions
 
