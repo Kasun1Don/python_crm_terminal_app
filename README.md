@@ -31,7 +31,7 @@ If the URL is found in the database, the assigned sales representative's name is
 
 Error Handling: If the URL format is invalid, an error message is displayed and the loop continues to prompt the user until a valid URL is entered.
 
-### Feature 2: Add New Lead
+### Feature 2: Add New Lead & Database
 
 This feature allows the user to add a new lead to the database by providing details for the database fields.
 
