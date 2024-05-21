@@ -208,7 +208,7 @@ def main():
                 print(Fore.GREEN + f"Lead {field} updated successfully." + Style.RESET_ALL)
             else:
                 visual_seperator()
-                print(Fore.RED + "Failed to update lead." + Style.RESET_ALL)
+                print(Fore.RED + "Failed to update lead. Please restart program and try again." + Style.RESET_ALL)
 
 # Option 5: Display all the leads
         elif choice == "5":
@@ -227,7 +227,7 @@ def main():
 # Option 7: Exit terminal application
         elif choice == "7":
             visual_seperator()
-            print(Fore.GREEN + "Exiting LITESPEED Sales CRM." + Style.RESET_ALL)
+            print(Fore.GREEN + "Exiting LITESPEED Sales CRM..." + Style.RESET_ALL)
             break
         else:
             validations.selection_invalid()
