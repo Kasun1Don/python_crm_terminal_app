@@ -2,24 +2,26 @@ import csv
 import pandas as pd
 from tabulate import tabulate
 from colorama import init, Fore, Style
+from lead import Lead
 
 init()
 
-#searches for a lead in the CSV file based on the company URL and prints the lead's details if found
+#searches for a lead in the CSV file based on the company URL and prints the lead's details if found using the __str__ method of Lead
 def find_lead(company_url, lead_database="leads_appdatabase.csv"):
     with open(lead_database) as f:
         reader = csv.DictReader(f)
         for row in reader:
             if row["company_url"] == company_url:
-                print(f"ID: {row['id']}")
-                print(f"Name: {row['name']}")
-                print(f"Company Name: {row['company_name']}")
-                print(f"Company URL: {row['company_url']}")
-                print(f"Email: {row['email']}")
-                print(f"Role: {row['role']}")
-                print(f"Assigned to: {row['assigned_to']}")
-                print(f"Status: {row['status']}")
-                print(f"Timestamp: {row['timestamp']}")
+                lead = Lead(
+                    row['name'],
+                    row['company_name'], 
+                    row['company_url'], 
+                    row['email'], 
+                    row['role'], 
+                    row['assigned_to'], 
+                    row['status']
+                )
+                print(lead)
                 return
     print(Fore.RED + "No lead found for this company URL." + Style.RESET_ALL)
 
@@ -55,14 +57,14 @@ def remove_lead(company_url, lead_database="leads_appdatabase.csv"):
     with open(lead_database, "r") as readfile:
         reader = csv.reader(readfile)
         for row in reader:
-            if row and row[3] != company_url:  # Updated to match column index for company_url
+            if row and row[3] != company_url:  
                 lines.append(row)
     with open(lead_database, "w", newline='') as writefile:
         writer = csv.writer(writefile)
         #write filtered rows back to the CSV file, removing the rows with specified URLs
         writer.writerows(lines)
 
-#reads the column titles
+#reads the column titles to retrieve
 def get_columns(lead_database="leads_appdatabase.csv"):
     with open(lead_database) as f:
         data = f.readline()
@@ -75,11 +77,14 @@ def update_lead(company_url, field, new_value, lead_database="leads_appdatabase.
     columns = get_columns(lead_database)
     with open(lead_database, "r") as readfile:
         reader = csv.DictReader(readfile)
+        #iterate over each row in the database to check for specified URL
         for row in reader:
             if row["company_url"] == company_url:
                 row[field] = new_value
                 updated = True
             lines.append(row)
+
+    #if the lead was updated, write the updated rows back to the database
     if updated:
         with open(lead_database, "w", newline='') as writefile:
             writer = csv.DictWriter(writefile, fieldnames=columns)
