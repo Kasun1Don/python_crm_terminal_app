@@ -105,7 +105,7 @@ The URL entered by the user is stored in a local variable. Then the URL format i
 
 A `while` loop prompts for a valid URL until one is provided. Then an `if` condition checks if the URL exists in the database.
 
-When a lead is found, its details are displayed using the __str__ method of the Lead class, defined in the `lead.py` module.
+When a lead is found, its details are displayed using the `__str__` method of the Lead class, defined in the `lead.py` module.
 
 Error Handling: Invalid URL formats and non-existent URLs result in error messages.
 
