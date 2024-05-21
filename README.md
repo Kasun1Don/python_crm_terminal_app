@@ -165,7 +165,7 @@ chmod +x run_crm.sh
 
 7. The terminal application will prompt for input.
 
-8. On macOS: for the best user experience, drag the corner of the terminal window to set width & height to at least `100 x 40`.
+8. On macOS: for the best user experience, drag the corner of the terminal window to set width & height respectively to at least `100 x 40`.
 
 9. To exit the application at any time use `Ctrl + C`.
 
@@ -188,7 +188,7 @@ Note:
 
 ## System Requirements
 
-The application requires Python version 3.10 or above to run. 
+The application requires Python version 3.10 or above to run.
 
 Check your machine's Python version or if it has python installed by trying the following terminal commands:
 
