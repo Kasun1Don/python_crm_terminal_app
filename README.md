@@ -9,7 +9,7 @@ It allows sales development representatives to quickly identify if a lead has al
 [GitHub](https://github.com/Kasun1Don/terminal_app)
 
 
-Link Address: https://github.com/Kasun1Don/terminal_app
+Link Address: `https://github.com/Kasun1Don/terminal_app`
 
 ## Style Guide
 
@@ -25,25 +25,46 @@ Kanban board
 ### Kanban Progress Tracking Screenshots:
 
 ## Installation Instructions
-To run the program, open the GitHub repository and click the green " < > Code " button. Select 'Download ZIP'
 
-Save the ZIP file to a directory which can be navigate to using the terminal. Unzip the file.
+1. To run the program, open the GitHub repository and click the green [ < > Code ] button. Select 'Download ZIP'
+
+2. Save the ZIP file to a directory which can be navigated to using the terminal. Unzip the file.
 
 In the Terminal:
 
-Navigate to the foldeer containing the unzipped file. Open or cd into the terminal_app directory.
+3. Navigate to the directory where the file was unzipped. Change directory (cd) to the `terminal_app-main` folder.
 
+4. Change permissions to make the script executable by entering:
 ```bash
 chmod +x run_crm.sh
 ```
-Run the script by entering the following command:
+5. Run the script by entering the following command:
 ```bash
 ./run_crm.sh
 ```
 
-3. The script will install all required dependencies listed in the Dependencies section.
+6. The script will install all required dependencies listed in the Dependencies section.
 
-*if an error message says "This program runs on Python3, but it looks like Python3 is not installed." refer to System Requirements below:
+7. The terminal application will prompt for input.
+
+8. To exit the application at any time use `Ctrl + C`.
+
+Note: 
+
+* This application primarily requires company URLs to interact with the lead database.
+
+    A list of Company URLs to test the application :
+
+    ```
+    https://www.vercel.com
+    https://www.miro.com
+    https://www.salesforce.com
+    https://www.zoom.us
+
+    (the application uses this URL format)
+    ```
+
+* if an error message says "This program runs on Python3, but it looks like Python3 is not installed." refer to System Requirements below:
 
 ## System Requirements
 
@@ -54,10 +75,11 @@ python --version
 
 python3 --version
 ```
-If both return an error message or the version requires updating, follow the Python installation guide to install or upgrade to the latest version of Python.
+If both return an error message or the version requires updating, follow this [Python installation guide](https://wiki.python.org/moin/BeginnersGuide/Download) to install or upgrade to the latest version of Python.
 
 
 ## Dependencies and Packages
+
 The Python application requires the following packages:
 
 * colorama: for colored text in the terminal
